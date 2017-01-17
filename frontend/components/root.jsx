@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import App from './app';
 import AuthFormContainer from './auth_form/auth_form_container';
 import DashContainer from './dash/dash_container';
-import CreatePollContainer from './create_poll/create_poll_container';
+import CreatePollContainer from './static_create_poll/create_poll_container';
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';

@@ -12,7 +12,11 @@
 
 class Question < ApplicationRecord
 
+  belongs_to :group
+
   belongs_to :user
 
-  validates :user_id, :body, :type, presence: true
+  has_many :answers
+
+  validates :group_id, :body, :type, presence: true
 end

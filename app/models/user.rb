@@ -14,6 +14,10 @@ class User < ApplicationRecord
 
   has_many :questions
 
+  has_many :groups
+
+  has_many :responses
+
   validates :username, presence: true, uniqueness: {message: "Username already taken"}
   validates :password_digest, presence: { message: "Password can't be blank" }
   validates :password, length: { minimum: 6, allow_nil: true, message: "Password needs to be at least 6 characters" }

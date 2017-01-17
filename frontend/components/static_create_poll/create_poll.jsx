@@ -45,12 +45,8 @@ class CreatePoll extends React.Component {
       question_index: 0,
       question_order: [0],
       questions: {
-      0: {question: "Enter question here?",
-          type: "mc",
-          answer_index: 0,
-          answer_order: [0],
-          answers: {
-                   0: ""}}
+      0: { question: "Enter question here?",
+      type: "mc"}
     }};
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -65,7 +61,7 @@ class CreatePoll extends React.Component {
     //error for empty questions w stated answers
     //return boolean
     let change = {};
-    this.state.question_order.forEach((id) => {
+    this.getState().question_order.forEach((id) => {
 
     });
   }
@@ -80,42 +76,19 @@ class CreatePoll extends React.Component {
   }
 
   handleAddQuestion () {
-    let new_id = this.state.question_index + 1;
-
-    let new_question =
-      {[new_id]: { question: "",
-                   type: "",
-                   answer_index: 0,
-                   answer_order: [0],
-                   answers: {
-                            0: {answer:""}}}};
-
-    this.setState({ question_index: new_id,
-                    question_order: this.state.question_order.concat(new_id),
-                    questions: this.state.questions.concat(new_question)});
   }
 
-  handleAddAnswer(questionId) {
-    let new_id = this.state[questionId].answer_index + 1;
-
-    let new_answer =
-      {[new_id]: { answer: ""};
-
-    this.setState({ question_index: new_id,
-                    question_order: this.state.question_order.concat(new_id),
-                    questions: this.state.questions.concat(new_answer)});
-  }
-
-  handleStateChange(questionId) {
+  handleStateChange(question_id) {
     return (field) => (e) => {
-      let change = this.state[questionId];
+      let change = this.getState()[question_id];
       change[field] = e.target.value;
-      this.setState({[questionId]: change});
+      this.setState({[question_id]: change});
     };
   }
 
   render () {
-    let old = (
+
+    return (
         <form onSubmit={this.handleSubmit}>
           <QuestionFormIndex
             handleStateChange={this.handleStateChange}
@@ -126,18 +99,6 @@ class CreatePoll extends React.Component {
             type="submit"/>
         </form>
     );
-
-    return (
-      <form onSubmit={this.handleSubmit}>
-        <QuestionFormIndex
-          handleStateChange={this.handleStateChange}
-          pollForm={this.state}
-          />
-        <RaisedButton
-          label="Generate Poll"
-          type="submit"/>
-      </form>
-    )
   }
 }
 
