@@ -8,24 +8,32 @@ import RaisedButton from 'material-ui/RaisedButton';
 
 class QuestionForm extends React.Component {
 
+  handleSubmit() {
+
+  }
+
   render() {
     const info = this.props.OneQuestionInfo;
     const handleStateChange = this.props.handleStateChange;
 
+
     return (
             <div>
             <TextField
-              floatingLabelText="Question?"
-              value={this.info.question}
-              onChange={this.handleStateChange("question")}>
+              floatingLabelText={"Question"}
+              value={info.question}
+              onChange={handleStateChange("question")}>
             </TextField>
             <br/>
             <TextField
               floatingLabelText="Test type"
-              value={this.info.type}
-              onChange={this.handleStateChange("type")}>
+              value={info.type}
+              onChange={handleStateChange("type")}>
             </TextField>
-             </div>
+            <RaisedButton
+              label="Add Question"
+              />
+          </div>
   );
   }
 }

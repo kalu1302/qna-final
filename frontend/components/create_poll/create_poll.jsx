@@ -42,6 +42,7 @@ class CreatePoll extends React.Component {
     //   };
 
     this.state = {
+      question_index: 0,
       question_order: [0],
       questions: {
       0: { question: "Enter question here?",
@@ -61,8 +62,8 @@ class CreatePoll extends React.Component {
     //return boolean
     let change = {};
     this.getState().question_order.forEach((id) => {
-      
-    })
+
+    });
   }
 
   handleSubmit() {
@@ -75,7 +76,6 @@ class CreatePoll extends React.Component {
   }
 
   handleAddQuestion () {
-    //create questionCard w appropriate id
   }
 
   handleStateChange(question_id) {
@@ -83,25 +83,22 @@ class CreatePoll extends React.Component {
       let change = this.getState()[question_id];
       change[field] = e.target.value;
       this.setState({[question_id]: change});
-    }
+    };
   }
 
   render () {
 
-    const test = (
-      <div>
-        <form>
+    return (
+        <form onSubmit={this.handleSubmit}>
           <QuestionFormIndex
             handleStateChange={this.handleStateChange}
-            pollForm={this.getState()}
+            pollForm={this.state}
             />
           <RaisedButton
-            label="Generate Poll"/>
+            label="Generate Poll"
+            type="submit"/>
         </form>
-      </div>
     );
-
-    return ({test});
   }
 }
 
