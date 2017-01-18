@@ -44,7 +44,7 @@ class NavBar extends React.Component{
     return (
       <Toolbar>
         <ToolbarGroup>
-          <h2>Logo</h2>
+          <h2>My</h2>
           <ToolbarTitle text="QnA" />
         </ToolbarGroup>
         {buttons}

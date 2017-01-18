@@ -4,6 +4,7 @@ import Modal from 'react-modal';
 
 import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
+import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 
 class TakePollModal extends React.Component {
   constructor() {
@@ -22,6 +23,10 @@ class TakePollModal extends React.Component {
     Modal.setAppElement('body');
   }
 
+  componentDidMount() {
+    //pull from db into store
+  }
+
   openModal() {
     this.setState({modalIsOpen: true});
   }
@@ -34,27 +39,46 @@ class TakePollModal extends React.Component {
   }
 
   render() {
+
+    const groupId = this.props.groupId;
+
     return (
       <div>
-        <RaisedButton
-          onClick={this.openModal}
-          label="Take A Poll"
-          secondary={true}/>
+        <Card onClick={this.openModal}>
+          <CardHeader
+            title={"Poll: ".concat(groupId)}/>
+          <br/>
+          <CardMedia>
+            <img src="assets/happy.svg"
+                 width="60" height="60"
+                 onClick={this.openModal}/>
+          </CardMedia>
+          <br/>
+          <CardActions>
+            <FlatButton
+              onClick={this.openModal}
+              label="Take This Poll"
+              primary={true}/>
+          </CardActions>
+        </Card>
         <Modal
           isOpen={this.state.modalIsOpen}
           onAfterOpen={this.afterOpenModal}
           onRequestClose={this.closeModal}
-          contentLabel="Poll"
-        >
+          contentLabel="Poll">
 
-          <FlatButton
+          <h3>{"Poll: ".concat(groupId)}</h3>
+
+          <RaisedButton
             onClick={this.closeModal}
-            label="Back to Dash"/>
+            label="Back to Dash"
+            secondary={true}/>
+
           <form>
             <input />
-            <button>test</button>
-
+            <button>answer</button>
           </form>
+
         </Modal>
       </div>
     );
