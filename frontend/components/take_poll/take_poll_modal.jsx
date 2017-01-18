@@ -7,8 +7,8 @@ import FlatButton from 'material-ui/FlatButton';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 
 class TakePollModal extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       modalIsOpen: false
@@ -17,6 +17,8 @@ class TakePollModal extends React.Component {
     this.openModal = this.openModal.bind(this);
     this.afterOpenModal = this.afterOpenModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
+    this.fetchQuestions = this.props.fetchQuestions.bind(this);
+    this.groupId = this.props.groupId;
   }
 
   componentWillMount() {
@@ -32,6 +34,7 @@ class TakePollModal extends React.Component {
   }
 
   afterOpenModal() {
+    this.fetchQuestions(this.groupId);
   }
 
   closeModal() {
@@ -39,14 +42,13 @@ class TakePollModal extends React.Component {
   }
 
   render() {
-
-    const groupId = this.props.groupId;
-
+    const info = this.props.takePoll;
+    debugger
     return (
       <div>
         <Card onClick={this.openModal}>
           <CardHeader
-            title={"Poll: ".concat(groupId)}/>
+            title={"Poll: ".concat(this.groupId, " ", info.name)}/>
           <br/>
           <CardMedia>
             <img src="assets/happy.svg"
@@ -67,7 +69,7 @@ class TakePollModal extends React.Component {
           onRequestClose={this.closeModal}
           contentLabel="Poll">
 
-          <h3>{"Poll: ".concat(groupId)}</h3>
+          <h3>{"Poll: ".concat(this.groupId)}</h3>
 
           <RaisedButton
             onClick={this.closeModal}
@@ -75,8 +77,7 @@ class TakePollModal extends React.Component {
             secondary={true}/>
 
           <form>
-            <input />
-            <button>answer</button>
+            <RaisedButton label={info.questions[0]}/>
           </form>
 
         </Modal>
