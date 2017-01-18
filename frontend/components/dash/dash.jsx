@@ -28,7 +28,6 @@ class Dash extends React.Component {
 
     return (
       <div>
-        <h3>Stand in splash image...</h3>
         <div className="fill-screen">
           <img className="make-it-fit" src="assets/sunset.jpeg"/>
         </div>

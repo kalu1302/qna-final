@@ -31,22 +31,22 @@ const Root = ({store}) => {
   return (
     <Provider store={store}>
       <MuiThemeProvider>
-      <Router history={ hashHistory }>
-        <Route path='/' component={ App }>
-          <Route path='login'
-                 component={ AuthFormContainer }
-                 onEnter={reqNotLoggedIn}/>
-          <Route path='signup'
-                 component={ AuthFormContainer }
-                 onEnter={reqNotLoggedIn}/>
-          <Route path='create'
-                 component={ DashContainer }
-                 onEnter={reqLoggedIn}/>
-          <Route path='new'
-                 component={ CreatePollContainer }/>
-        </Route>
-      </Router>
-    </MuiThemeProvider>
+        <Router history={ hashHistory }>
+          <Route path='/' component={ App }>
+            <Route path='login'
+                   component={ AuthFormContainer }
+                   onEnter={reqNotLoggedIn}/>
+            <Route path='signup'
+                   component={ AuthFormContainer }
+                   onEnter={reqNotLoggedIn}/>
+            <Route path='create'
+                   component={ DashContainer }
+                   onEnter={reqLoggedIn}/>
+            <Route path='new'
+                   component={ CreatePollContainer }/>
+          </Route>
+        </Router>
+      </MuiThemeProvider>
     </Provider>
   );
 };

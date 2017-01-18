@@ -1,7 +1,19 @@
 import { merge } from 'lodash';
 import { RECEIVE_QUESTIONS, ReceiveQuestions} from '../actions/take_poll_actions';
 
-  const defaultTakePollState = {};
+  const defaultTakePollState = {
+    name: "",
+    questions: [
+      { answers: [
+        {
+          answer: "",
+          id: ""
+        }
+      ],
+        body: " ",
+        id: ""
+      }
+    ]};
 
   const TakePollReducer = (oldState = defaultTakePollState, action) => {
     Object.freeze(oldState);

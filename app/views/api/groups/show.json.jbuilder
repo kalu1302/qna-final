@@ -1,4 +1,4 @@
-json.title @group.name
+json.name @group.name
 
 @questions = @group.questions
 json.questions(@questions) do |question|
@@ -9,5 +9,6 @@ json.questions(@questions) do |question|
 
   json.answers(@answers) do |answer|
     json.answer answer.body
+    json.id answer.id
   end
 end

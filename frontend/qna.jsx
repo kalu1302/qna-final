@@ -8,7 +8,8 @@ injectTapEventPlugin();
 
 //TODO remove testing
 import { login, signup, logout } from './actions/session_actions';
-
+import {fetchQuestions, receiveQuestions} from './actions/take_poll_actions';
+import * as TakePollApiUtil from './util/take_poll_api_util';
 
 document.addEventListener('DOMContentLoaded', () => {
  //TODO TESTING
@@ -16,7 +17,10 @@ document.addEventListener('DOMContentLoaded', () => {
   window.signup = signup;
   window.logout = logout;
   window.user1 = {user: {username:"testing", password:"testing"}};
-  
+  window.fetchQuestions = fetchQuestions;
+  window.TakePollApiUtil = TakePollApiUtil;
+  window.receiveQuestions = receiveQuestions;
+
   let store;
   if (window.currentUser) {
     const preloadedState = { session: { currentUser: window.currentUser } };
