@@ -6,6 +6,7 @@ import App from './app';
 import AuthFormContainer from './auth_form/auth_form_container';
 import DashContainer from './dash/dash_container';
 import CreatePollContainer from './static_create_poll/create_poll_container';
+import LiveViewContainer from './live_view/live_view_container';
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
@@ -44,6 +45,8 @@ const Root = ({store}) => {
                    onEnter={reqLoggedIn}/>
             <Route path='new'
                    component={ CreatePollContainer }/>
+            <Route path='live'
+                   component={ LiveViewContainer }/>
           </Route>
         </Router>
       </MuiThemeProvider>

@@ -25,7 +25,7 @@ class User < ApplicationRecord
   validates :password_digest, presence: { message: "Password can't be blank" }
   validates :password, length: { minimum: 6, allow_nil: true, message: "Password needs to be at least 6 characters" }
 
-  after_initialize :ensure_session_token
+  after_initialize :ensure_session_token, :ensure_live_url
   attr_reader :password
 
   def password=(password)
@@ -75,4 +75,10 @@ class User < ApplicationRecord
     end
   end
 
+  def ensure_live_url
+    self.live_url = SecureRandom.urlsafe_base64(4)
+    while User.find_by_live_url(self.live_url)
+      self.live_url = SecureRandom.urlsafe_base64(4)
+    end
+  end
 end
