@@ -22,10 +22,17 @@ class TakePollItem extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {currentQuestionIndex: 0};
+    //answers: javascript allows noninit access
+    this.state = {currentQuestionIndex: 0,
+      answers: []
+    };
     this.handleNextQuestion = this.handleNextQuestion.bind(this);
     this.handlePrevQuestion = this.handlePrevQuestion.bind(this);
     this.invalidQuestionShift = this.invalidQuestionShift.bind(this);
+    this.handleRadioSelect = this.handleRadioSelect.bind(this);
+    this.incompleteForm = this.incompleteForm.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.currentAnswered = this.currentAnswered.bind(this);
   }
 
 
@@ -55,6 +62,30 @@ class TakePollItem extends React.Component {
     return (typeof questions[ currentIndex + shift ] === 'undefined');
   }
 
+  handleRadioSelect(e, valueSelected) {
+    e.preventDefault();
+    let new_answers = this.state.answers;
+    new_answers[this.state.currentQuestionIndex] = valueSelected;
+    this.setState({answers: new_answers});
+    console.log("answers: ".concat(this.state.answers));
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    let answers = {user_id: this.props.currentUser.id, answers: this.state.answers};
+    this.props.submitPollAnswers(answers);
+    this.props.closeModal();
+  }
+
+  incompleteForm() {
+    let numOfQuestions = this.props.takePoll.questions.length;
+    return (numOfQuestions !== this.state.answers.length);
+  }
+
+  currentAnswered() {
+    return (this.state.answers[this.state.currentQuestionIndex]);
+  }
+
   render() {
 
     const info = this.props.takePoll;
@@ -63,21 +94,28 @@ class TakePollItem extends React.Component {
 
     const answers = currentQuestion.answers;
     const answerChoices = answers.map(
-      item => (
+      item => {
+        const selected = (this.currentAnswered() === item.id);
+        return (
+
         <RadioButton
           key={item.id}
           ref={item.id}
-          value={item.answer}
+          value={item.id}
           label={item.answer}
-          style={styles.radioButton}/>
-      ));
-
+          style={styles.radioButton}
+          selected={selected}/>
+      );
+      });
 
     return (
       <div>
         <h4>{"Poll: ".concat(info.name)}</h4>
         <h3>{"Question: ".concat(currentQuestion.body)}</h3>
-        <RadioButtonGroup name={currentQuestion.body}>
+        <RadioButtonGroup
+          name={currentQuestion.body}
+          onChange={this.handleRadioSelect}
+          valueSelected={this.currentAnswered()}>
           {answerChoices}
         </RadioButtonGroup>
         <RaisedButton
@@ -85,12 +123,16 @@ class TakePollItem extends React.Component {
           label="Prev Question"
           onClick={this.handlePrevQuestion}
           disabled={this.invalidQuestionShift(-1)}/>
-        <h3> Navigate Poll </h3>
         <RaisedButton
           ref="next"
           label="Next Question"
           onClick={this.handleNextQuestion}
           disabled={this.invalidQuestionShift(1)}/>
+        <RaisedButton
+          ref="submitAnswers"
+          label="Finish Poll"
+          onClick={this.handleSubmit}
+          disabled={this.incompleteForm()}/>
       </div>
     );
   }

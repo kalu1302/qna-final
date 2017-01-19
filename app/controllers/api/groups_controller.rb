@@ -5,6 +5,11 @@ class Api::GroupsController < ApplicationController
     render :show
   end
 
+  def index
+    @groups = Group.all
+
+    render :index
+  end
 
 
 end

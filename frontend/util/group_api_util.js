@@ -1,4 +1,4 @@
-export const getGroup = (id) => (
+export const fetchGroup = (id) => (
   $.ajax({
     method: "GET",
     url: `api/groups/${id}`
@@ -17,5 +17,12 @@ export const deleteGroup = (id) => (
   $.ajax({
     method: "DELETE",
     url: `api/groups/${id}`
+  })
+);
+
+export const fetchAllGroups = (id) => (
+  $.ajax({
+    method: "GET",
+    url: "api/groups"
   })
 );

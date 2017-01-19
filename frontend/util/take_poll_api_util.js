@@ -4,3 +4,11 @@ export const fetchQuestions = (groupId) => (
     url: `api/groups/${groupId}`
   })
 );
+
+export const submitPollAnswers = (data) => (
+  $.ajax({
+    method: "POST",
+    url: "api/responses",
+    data: data
+  })
+);

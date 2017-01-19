@@ -10,6 +10,8 @@ injectTapEventPlugin();
 import { login, signup, logout } from './actions/session_actions';
 import {fetchQuestions, receiveQuestions} from './actions/take_poll_actions';
 import * as TakePollApiUtil from './util/take_poll_api_util';
+import { fetchAllGroups, receivePollsIndex } from './actions/take_poll_index_actions';
+import * as GroupApiUtil from './util/group_api_util';
 
 document.addEventListener('DOMContentLoaded', () => {
  //TODO TESTING
@@ -20,6 +22,9 @@ document.addEventListener('DOMContentLoaded', () => {
   window.fetchQuestions = fetchQuestions;
   window.TakePollApiUtil = TakePollApiUtil;
   window.receiveQuestions = receiveQuestions;
+  window.fetchAllGroups = fetchAllGroups;
+  window.GroupApiUtil = GroupApiUtil;
+  window.receivePollsIndex = receivePollsIndex;
 
   let store;
   if (window.currentUser) {

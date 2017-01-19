@@ -2,6 +2,7 @@ import * as TakePollApiUtil from '../util/take_poll_api_util';
 import { hashHistory } from 'react-router';
 
 export const RECEIVE_QUESTIONS = "RECEIVE_QUESTIONS";
+export const RESET_QUESTIONS = "RESET_QUESTIONS";
 
 export const fetchQuestions = (groupId) => (dispatch) => (
   TakePollApiUtil.fetchQuestions(groupId)
@@ -11,7 +12,19 @@ export const fetchQuestions = (groupId) => (dispatch) => (
                   })
 );
 
+//then
+export const submitPollAnswers = (answersData) => (dispatch) => (
+  TakePollApiUtil.submitPollAnswers(answersData)
+                .then(
+                  () => (dispatch(resetQuestions())
+                ))
+);
+
 export const receiveQuestions = (questions) => ({
   type: RECEIVE_QUESTIONS,
   questions
+});
+
+export const resetQuestions = () => ({
+  type: RESET_QUESTIONS
 });

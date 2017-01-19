@@ -5,11 +5,12 @@ import TakePollItem from './take_poll_item';
 
 import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
-import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 
 class TakePollModal extends React.Component {
   constructor(props) {
     super(props);
+
+
 
     this.state = {
       modalIsOpen: false
@@ -45,31 +46,28 @@ class TakePollModal extends React.Component {
   render() {
 
     return (
-      <div>
-        <Card onClick={this.openModal}>
-          <CardHeader
-            title={"Poll: ".concat(this.groupId, " ")}/>
+      <div  className="poll-index-item-container"
+            onClick={this.openModal}>
+        <div className="poll-index-item"
+          onClick={this.openModal}>
+          <h3>
+            {"Poll: ".concat(this.groupId, " ")}
+          </h3>
           <br/>
-          <CardMedia>
-            <img src="assets/happy.svg"
-                 width="60" height="60"
-                 onClick={this.openModal}/>
-          </CardMedia>
-          <br/>
-          <CardActions>
-            <FlatButton
-              onClick={this.openModal}
-              label="Take This Poll"
-              primary={true}/>
-          </CardActions>
-        </Card>
+          <img src="assets/happy.svg"
+               onClick={this.openModal}/>
+        </div>
+
         <Modal
           isOpen={this.state.modalIsOpen}
           onAfterOpen={this.afterOpenModal}
           onRequestClose={this.closeModal}
           contentLabel="Poll">
           <TakePollItem
-            takePoll={this.props.takePoll}/>
+            takePoll={this.props.takePoll}
+            submitPollAnswers={this.props.submitPollAnswers}
+            currentUser={this.props.currentUser}
+            closeModal={this.closeModal}/>
           <RaisedButton
             onClick={this.closeModal}
             label="Back to Dash"

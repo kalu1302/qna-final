@@ -1,5 +1,5 @@
 import { merge } from 'lodash';
-import { RECEIVE_QUESTIONS, ReceiveQuestions} from '../actions/take_poll_actions';
+import { RECEIVE_QUESTIONS, RESET_QUESTIONS, ReceiveQuestions} from '../actions/take_poll_actions';
 
   const defaultTakePollState = {
     name: "",
@@ -24,6 +24,8 @@ import { RECEIVE_QUESTIONS, ReceiveQuestions} from '../actions/take_poll_actions
     switch (action.type) {
       case RECEIVE_QUESTIONS:
         return action.questions;
+      case RESET_QUESTIONS:
+        return defaultTakePollState;
       default:
         return oldState;
     }
