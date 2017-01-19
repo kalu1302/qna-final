@@ -18,8 +18,7 @@ export const signup = (user) => (dispatch) => (
   SessionApiUtil.signup(user)
                 .then(
                   currentUser => {
-                    dispatch(receiveCurrentUser(currentUser));
-                    hashHistory.push('/create');
+                    dispatch(login(user));
                   },
                   errors => (dispatch(receiveUserErrors(errors.responseJSON)))
 ));

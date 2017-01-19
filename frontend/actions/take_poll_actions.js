@@ -1,4 +1,5 @@
 import * as TakePollApiUtil from '../util/take_poll_api_util';
+import { fetchResults } from './live_view_actions';
 import { hashHistory } from 'react-router';
 
 export const RECEIVE_QUESTIONS = "RECEIVE_QUESTIONS";
@@ -16,8 +17,9 @@ export const fetchQuestions = (groupId) => (dispatch) => (
 export const submitPollAnswers = (answersData) => (dispatch) => (
   TakePollApiUtil.submitPollAnswers(answersData)
                 .then(
-                  () => (dispatch(resetQuestions())
-                ))
+                  ({groupId}) => {
+                    dispatch(fetchResults(groupId));
+                })
 );
 
 export const receiveQuestions = (questions) => ({

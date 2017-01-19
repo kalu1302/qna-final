@@ -7,5 +7,6 @@ Rails.application.routes.draw do
     resources :answers, only: [:create, :show, :delete]
     resources :responses, only: [:create, :update, :show]
     resource :session, only: [:create, :destroy]
+    resources :live_views, only: [:show]
   end
 end

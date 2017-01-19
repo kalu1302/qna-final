@@ -76,9 +76,12 @@ class User < ApplicationRecord
   end
 
   def ensure_live_url
-    self.live_url = SecureRandom.urlsafe_base64(4)
-    while User.find_by_live_url(self.live_url)
+    if self.live_url.nil?
       self.live_url = SecureRandom.urlsafe_base64(4)
+      while User.find_by_live_url(self.live_url)
+        self.live_url = SecureRandom.urlsafe_base64(4)
+      end
     end
   end
+
 end

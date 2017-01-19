@@ -4,10 +4,7 @@ import { RECEIVE_RESULTS, RECEIVE_POLL_INFO} from '../actions/live_view_actions'
   const defaultLiveViewState = {
     authorId: "",
     groupId: "",
-    results: [{
-      answer_id: "",
-      tally: ""
-    }]
+    results: []
   };
 
 
@@ -20,7 +17,7 @@ import { RECEIVE_RESULTS, RECEIVE_POLL_INFO} from '../actions/live_view_actions'
         newState.results = action.results;
         return newState;
         case RECEIVE_POLL_INFO:
-          let newState = merge({}, oldState);
+          newState = merge({}, oldState);
           newState.groupId = action.groupId;
           newState.authorId = action.authorId;
           return newState;

@@ -9,6 +9,13 @@ import RaisedButton from 'material-ui/RaisedButton';
 class Dash extends React.Component {
   render () {
 
+    let liveUrlIsValid =
+    (typeof this.props.currentUser.live_url === "string")
+    && (typeof this.props.currentUser.live_group === "string");
+
+    let liveUrl = liveUrlIsValid ?
+                    "/live/".concat(this.props.currentUser.live_url) : "/new";
+
     return (
       <div>
         <div className="fill-screen">
@@ -19,6 +26,11 @@ class Dash extends React.Component {
         <RaisedButton
           containerElement={<Link to="new" />}
           label="Create New Poll"/>
+        <br/>
+        <br/>
+        <RaisedButton
+          containerElement={<Link to={liveUrl}/>}
+          label="Go To My Live Poll"/>
         <br/>
         <TakePollIndexContainer/>
         <br/>

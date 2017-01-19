@@ -8,7 +8,6 @@ const App = ({children}) => {
 
   return (
     <div>
-      <h1>QnA</h1>
       <NavBarContainer />
       { children }
     </div>

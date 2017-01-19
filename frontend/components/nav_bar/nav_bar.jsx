@@ -1,7 +1,5 @@
 import React from 'react';
-import { Link, withRouter } from 'react-router';
-
-
+import { Link, withRouter, hashHistory } from 'react-router';
 import RaisedButton from 'material-ui/RaisedButton';
 import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui/Toolbar';
 
@@ -12,6 +10,8 @@ class NavBar extends React.Component{
   }
 
   render() {
+    const url = location.hash;
+
     const currentUser = this.props.currentUser;
 
     const NavLoggedIn =
@@ -20,7 +20,8 @@ class NavBar extends React.Component{
         <RaisedButton
           containerElement={<Link to="/create" />}
           label="My Dashboard"
-          primary={true}/>
+          primary={true}
+          disabled={url === "#/create"}/>
         <ToolbarSeparator />
             <RaisedButton onClick={this.props.logout} label="Logout"/>
       </ToolbarGroup>
@@ -30,12 +31,14 @@ class NavBar extends React.Component{
       <ToolbarGroup>
         <RaisedButton
           containerElement={<Link to="/login" />}
-          label="Log in"/>
+          label="Log in"
+          disabled={url === "#/login"}/>
         <ToolbarSeparator />
           <RaisedButton
             containerElement={<Link to="/signup" />}
             label="Sign Up"
-            secondary={true}/>
+            secondary={true}
+            disabled={url === "#/signup"}/>
       </ToolbarGroup>
     );
 

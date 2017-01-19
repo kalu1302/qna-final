@@ -60,3 +60,26 @@ div.poll-index-item-container:hover {
 .poll-index-item:hover {
   cursor: pointer;
 }
+
+.bar-chart-div {
+  font-family: 'Roboto', sans-serif;
+  font: 10px;
+  text-transform: uppercase;
+  background-color: #00BCD4;
+  text-align: right;
+  padding: 10px;
+  margin: 5px;
+  color: white;
+}
+
+.bar-chart-div > div{
+  display: block;
+  float: left;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12),
+  0 1px 2px rgba(0,0,0,0.24);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+.bar-chart-div > div:hover{
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25),
+  0 10px 10px rgba(0,0,0,0.22);
+}

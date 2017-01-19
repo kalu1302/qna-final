@@ -13,6 +13,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 class AuthForm extends React.Component{
   constructor() {
     super();
+
     this.handleSubmit = this.handleSubmit.bind(this);
     this.state = {username:"", password:""};
     this.updateField = this.updateField.bind(this);
@@ -36,7 +37,6 @@ class AuthForm extends React.Component{
   updateField(field) {
     return (e) => {
       this.setState({[field]: e.target.value});
-      console.log(this.state);
     };
   }
 
@@ -45,7 +45,7 @@ class AuthForm extends React.Component{
     const formType = location.hash.substring(2);
     return (
       <div>
-        <h4>AuthForm: {formType}</h4>
+        <h2>{formType}</h2>
           <form onSubmit={this.handleSubmit}>
             <TextField
               floatingLabelText="username"

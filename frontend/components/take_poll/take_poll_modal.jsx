@@ -5,12 +5,23 @@ import TakePollItem from './take_poll_item';
 
 import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
+import FloatingActionButton from 'material-ui/FloatingActionButton';
+
+//temp
+const style = {
+    margin: 0,
+    top: 'auto',
+    right: 20,
+    bottom: 20,
+    left: 'auto',
+    position: 'fixed',
+};
+
+
 
 class TakePollModal extends React.Component {
   constructor(props) {
     super(props);
-
-
 
     this.state = {
       modalIsOpen: false
@@ -39,15 +50,16 @@ class TakePollModal extends React.Component {
   afterOpenModal() {
   }
 
+  componentWillUnmount() {
+
+  }
+
   closeModal() {
     this.setState({modalIsOpen: false});
   }
 
   render() {
-
-    return (
-      <div  className="poll-index-item-container"
-            onClick={this.openModal}>
+    const classic = (
         <div className="poll-index-item"
           onClick={this.openModal}>
           <h3>
@@ -57,22 +69,40 @@ class TakePollModal extends React.Component {
           <img src="assets/happy.svg"
                onClick={this.openModal}/>
         </div>
+    );
 
-        <Modal
-          isOpen={this.state.modalIsOpen}
-          onAfterOpen={this.afterOpenModal}
-          onRequestClose={this.closeModal}
-          contentLabel="Poll">
-          <TakePollItem
-            takePoll={this.props.takePoll}
-            submitPollAnswers={this.props.submitPollAnswers}
-            currentUser={this.props.currentUser}
-            closeModal={this.closeModal}/>
-          <RaisedButton
-            onClick={this.closeModal}
-            label="Back to Dash"
-            secondary={true}/>
-        </Modal>
+    const floating = (
+      <div>
+        <FloatingActionButton style={style} onClick={this.openModal}>
+          Take Poll
+        </FloatingActionButton>
+      </div>
+    );
+
+    const buttonRender = this.props.float ? floating : "";
+
+    return (
+      <div>
+        {buttonRender}
+        <div  className="poll-index-item-container"
+              onClick={this.openModal}>
+          {classic}
+          <Modal
+            isOpen={this.state.modalIsOpen}
+            onAfterOpen={this.afterOpenModal}
+            onRequestClose={this.closeModal}
+            contentLabel="Poll">
+            <TakePollItem
+              takePoll={this.props.takePoll}
+              submitPollAnswers={this.props.submitPollAnswers}
+              currentUser={this.props.currentUser}
+              closeModal={this.closeModal}/>
+            <RaisedButton
+              onClick={this.closeModal}
+              label="Back to Dash"
+              secondary={true}/>
+          </Modal>
+        </div>
       </div>
     );
   }

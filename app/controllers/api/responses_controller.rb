@@ -1,9 +1,10 @@
 class Api::ResponsesController < ApplicationController
 
   def create
-    @answers = params["answers"];
-    @user_id = params["user_id"];
-    @responses = [];
+    @answers = params["answers"]
+    @group = Answer.find(@answers.first).question.group
+    @user_id = params["user_id"]
+    @responses = []
 
     # frontend validated
     @answers.each do |answer|
@@ -14,6 +15,13 @@ class Api::ResponsesController < ApplicationController
     end
 
 
+    render :create
+  end
+
+  def show
+    @group = Group.find(params[:id])
+    @questions = @group.questions
+    #tallies responses of each answer
     render :show
   end
 

@@ -10,8 +10,8 @@ injectTapEventPlugin();
 import { login, signup, logout } from './actions/session_actions';
 import {fetchQuestions, receiveQuestions} from './actions/take_poll_actions';
 import * as TakePollApiUtil from './util/take_poll_api_util';
-import { fetchAllGroups, receivePollsIndex } from './actions/take_poll_index_actions';
-import * as GroupApiUtil from './util/group_api_util';
+import { fetchPollInfo, fetchResults} from './actions/live_view_actions';
+import * as LiveViewApiUtil from './util/live_view_api_util';
 
 document.addEventListener('DOMContentLoaded', () => {
  //TODO TESTING
@@ -19,12 +19,11 @@ document.addEventListener('DOMContentLoaded', () => {
   window.signup = signup;
   window.logout = logout;
   window.user1 = {user: {username:"testing", password:"testing"}};
-  window.fetchQuestions = fetchQuestions;
+  window.fetchResults = fetchResults;
   window.TakePollApiUtil = TakePollApiUtil;
   window.receiveQuestions = receiveQuestions;
-  window.fetchAllGroups = fetchAllGroups;
-  window.GroupApiUtil = GroupApiUtil;
-  window.receivePollsIndex = receivePollsIndex;
+  window.fetchPollInfo= fetchPollInfo;
+  window.LiveViewApiUtil = LiveViewApiUtil;
 
   let store;
   if (window.currentUser) {
