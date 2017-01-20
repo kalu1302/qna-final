@@ -14,10 +14,10 @@ QnA is a personal project by Kathy Luo.
 
 ##Implemented and Planned Features
 
-[x] User accounts with secure authentication and demo user login
-[x] Poll index view for logged in users
-[x] Live url for anonymous poll-taking with immediate results view
-[] Poll creation and broadcasting
+- [x] User accounts with secure authentication and demo user login
+- [x] Poll index view for logged in users
+- [x] Live url for anonymous poll-taking with immediate results view
+- [] Poll creation and broadcasting
 
 ![Poll Index](/docs/images/pollindex.png?raw=true "Poll Index")
 
