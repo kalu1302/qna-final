@@ -2,7 +2,7 @@
 
 [Visit QnA][heroku]
 
-[heroku]: qna-final.herokuapp.com
+[heroku]: https://qna-final.herokuapp.com
 
 ## QnA
 

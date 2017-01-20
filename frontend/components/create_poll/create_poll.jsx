@@ -1,6 +1,6 @@
 import React from 'react';
 import { Router, Link, withRouter, RouterContext } from 'react-router';
-import QuestionFormIndex from './question_form_index';
+import QuestionForm from './question_form';
 
 import TextField from 'material-ui/TextField';
 import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
@@ -117,9 +117,7 @@ class CreatePoll extends React.Component {
   render () {
     let old = (
         <form onSubmit={this.handleSubmit}>
-          <QuestionFormIndex
-            handleStateChange={this.handleStateChange}
-            pollForm={this.state}
+          <QuestionForm
             />
           <RaisedButton
             label="Generate Poll"
