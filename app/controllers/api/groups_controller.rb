@@ -36,6 +36,9 @@ class Api::GroupsController < ApplicationController
 
     end
 
+    @user.live_group = @group.id
+    @user.save
+
     #PASS BACK USER HASH for redirect
     render :create
   end

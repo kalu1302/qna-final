@@ -1,7 +1,7 @@
 // import * as SessionApiUtil from "../util/session_api_util";
 import { hashHistory } from 'react-router';
 import * as CreatePollApiUtil from "../util/create_poll_api_util";
-import { }
+import { fetchPollInfo } from "./live_view_actions";
 
 // export const RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";
 // export const RECEIVE_USER_ERRORS = "RECEIVE_USER_ERRORS";
@@ -23,11 +23,11 @@ export const RECEIVE_QUESTION_DATA = "RECEIVE_QUESTION_DATA";
 export const submitPoll = (group) => (dispatch) => (
   CreatePollApiUtil.submitPoll(group).then(
                   (hash) => {
-                    dispatch(receiveCurrentUser(currentUser));
-                    hashHistory.push('/create');
-                  },
-                  errors => (dispatch(receiveUserErrors(errors.responseJSON)))
-));
+                    dispatch(fetchPollInfo(hash));
+                    hashHistory.push(`/${hash}`);
+                  })
+);
+
 
 
 export const receiveGroupData = (group) => ({
