@@ -36,6 +36,7 @@ class Api::GroupsController < ApplicationController
 
     end
 
+    #PASS BACK USER HASH for redirect
     render :create
   end
 
