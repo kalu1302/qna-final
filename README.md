@@ -20,12 +20,15 @@ QnA is a personal project by Kathy Luo.
 - [ ] Poll creation and broadcasting
 
 Poll Index:
+
 ![Poll Index](/docs/images/pollindex.png?raw=true "Poll Index")
 
 Results Display:
+
 ![Live Results](/docs/images/liveview.png?raw=true "Live Results")
 
 Poll Window:
+
 ![Taking Polls](/docs/images/takepolls.png?raw=true "Taking Polls")
 
 ##Technology
