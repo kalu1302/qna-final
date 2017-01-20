@@ -42,6 +42,8 @@ class LiveViewPage extends React.Component {
   }
 
   componentWillMount() {
+    let url = location.hash.substring(7);
+    this.props.fetchPollInfo(url);
   }
 
   componentDidMount() {

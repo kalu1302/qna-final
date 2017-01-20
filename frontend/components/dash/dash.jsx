@@ -1,13 +1,15 @@
 import React from 'react';
-import { Link, withRouter } from 'react-router';
+import { Link, withRouter, hashHistory } from 'react-router';
 import TakePollIndexContainer from "../take_poll_index/take_poll_index_container";
-
-import { Grid, Row, Cell } from 'react-inline-grid';
 
 import RaisedButton from 'material-ui/RaisedButton';
 
 class Dash extends React.Component {
   render () {
+
+    if (this.props.currentUser === null) {
+      return (<div></div>);
+    } else {
 
     let liveUrlIsValid =
     (typeof this.props.currentUser.live_url === "string")
@@ -36,7 +38,7 @@ class Dash extends React.Component {
         <br/>
 
       </div>
-    );
+    );}
   }
 }
 

@@ -44,9 +44,11 @@ const Root = ({store}) => {
                    component={ DashContainer }
                    onEnter={reqLoggedIn}/>
             <Route path='new'
-                   component={ CreatePollContainer }/>
+                   component={ CreatePollContainer }
+                   onEnter={reqLoggedIn}/>
                  <Route path='live/:live_url'
-                   component={ LiveViewContainer }/>
+                   component={ LiveViewContainer }
+                   onEnter={reqLoggedIn}/>
           </Route>
         </Router>
       </MuiThemeProvider>

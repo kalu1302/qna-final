@@ -14,7 +14,26 @@ import { hashHistory } from 'react-router';
 //   errors
 // });
 
+export const RECEIVE_GROUP_DATA = "RECEIVE_GROUP_DATA";
+export const RECEIVE_ANSWER_DATA = "RECEIVE_ANSWER_DATA";
+export const RECEIVE_QUESTION_DATA = "RECEIVE_QUESTION_DATA";
 
+
+export const receiveGroupData = (group) => ({
+  type: RECEIVE_ANSWER_DATA,
+  group: group
+});
+
+export const receiveAnswerData = (qIndex, indexedAnswer) => ({
+  type: RECEIVE_ANSWER_DATA,
+  questionIndex: qIndex,
+  answer: indexedAnswer
+});
+
+export const receiveQuestionData = (indexedQuestion) => ({
+  type: RECEIVE_QUESTION_DATA,
+  question: indexedQuestion
+});
 
 /*
 

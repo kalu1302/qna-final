@@ -1,6 +1,5 @@
 import React from 'react';
 import { Router, Link, withRouter, RouterContext } from 'react-router';
-import QuestionFormIndex from './question_form_index';
 
 import TextField from 'material-ui/TextField';
 import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
@@ -18,36 +17,71 @@ QuestionFormIndex
 PollSubmitButton
 */
 
+// state slice =
+// {
+//      currentUser: {username: "", id: ""}
+//   pollForm: {question_order: [],
+//   questions: {
+//        1: { question: "text?",
+//             type: "multiple-choice",
+//             open: {true},
+//             answer_order: [],
+//             default_answers: {
+//               1: {answer: "option a, coord x y, true"}
+//
+//             }}
+//         }
+//   }
+//   };
+
+/* DATA FORMAT FOR API
+
+group:
+{ user_id:
+name:
+questions: [
+{ body:
+question_type:
+answers: [
+{ body:
+answer_type:
+}
+]
+}
+]
+
+*/
+
+/* DATA FORMAT FOR STORE
+
+group:
+{ user_id:
+name:
+questions: {
+0: { body:
+question_type:
+answers: {
+0: { body:
+answer_type:
+}
+}
+}
+}
+
+to format for API will call lodash._values(questions and answers)
+
+*/
+
 class CreatePoll extends React.Component {
 
   constructor() {
     super();
 
-
-    // state slice =
-    // {
-    //      currentUser: {username: "", id: ""}
-    //   pollForm: {question_order: [],
-    //   questions: {
-    //        1: { question: "text?",
-    //             type: "multiple-choice",
-    //             open: {true},
-    //             answer_order: [],
-    //             default_answers: {
-    //               1: {answer: "option a, coord x y, true"}
-    //
-    //             }}
-    //         }
-    //   }
-    //   };
-
     this.state = {
-      question_index: 0,
-      question_order: [0],
-      questions: {
-      0: { question: "Enter question here?",
-      type: "mc"}
-    }};
+      user_id: this.props.currentUser.id,
+      name: "",
+      question_index: 0
+    };
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.frontendValid = this.frontendValid.bind(this);
@@ -56,14 +90,11 @@ class CreatePoll extends React.Component {
   }
 
   frontendValid() {
+    //non priority
     //omit empty questions w empty answers
     //omit empty answers from titled questions
     //error for empty questions w stated answers
     //return boolean
-    let change = {};
-    this.getState().question_order.forEach((id) => {
-
-    });
   }
 
   handleSubmit() {
@@ -76,27 +107,34 @@ class CreatePoll extends React.Component {
   }
 
   handleAddQuestion () {
+    //increment index
+    //"create" <QuestionFormContainer index={index}/> by modifying the store
   }
 
-  handleStateChange(question_id) {
-    return (field) => (e) => {
-      let change = this.getState()[question_id];
-      change[field] = e.target.value;
-      this.setState({[question_id]: change});
-    };
+  handleStateChange() {
+
   }
 
   render () {
 
+    const questions = this.props.groups.questions;
+    const renderQuestions = Object.keys(questions).map(
+      (q_ind) => {
+        let question = questions[q_ind];
+
+        return (
+        <QuestionForm
+          key={q_ind}
+          index={q_ind}
+          question={question}/>
+        );
+      }
+    );
+
+
     return (
+
         <form onSubmit={this.handleSubmit}>
-          <QuestionFormIndex
-            handleStateChange={this.handleStateChange}
-            pollForm={this.state}
-            />
-          <RaisedButton
-            label="Generate Poll"
-            type="submit"/>
         </form>
     );
   }
