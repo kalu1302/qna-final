@@ -67,7 +67,6 @@ class TakePollItem extends React.Component {
     let new_answers = this.state.answers;
     new_answers[this.state.currentQuestionIndex] = valueSelected;
     this.setState({answers: new_answers});
-    console.log("answers: ".concat(this.state.answers));
   }
 
   handleSubmit(e) {
