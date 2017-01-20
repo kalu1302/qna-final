@@ -62,11 +62,8 @@ class TakePollModal extends React.Component {
     const classic = (
         <div className="poll-index-item"
           onClick={this.openModal}>
-          <h3>
-            {"Poll: ".concat(this.groupId, " ")}
-          </h3>
-          <br/>
-          <img src="assets/happy.svg"
+            <h4>{"Poll ".concat(this.groupId, " ")}</h4>
+          <img src="assets/question.jpg"
                onClick={this.openModal}/>
         </div>
     );
@@ -92,15 +89,15 @@ class TakePollModal extends React.Component {
             onAfterOpen={this.afterOpenModal}
             onRequestClose={this.closeModal}
             contentLabel="Poll">
+            <RaisedButton
+              onClick={this.closeModal}
+              label="Back to Dash"
+              secondary={true}/>
             <TakePollItem
               takePoll={this.props.takePoll}
               submitPollAnswers={this.props.submitPollAnswers}
               currentUser={this.props.currentUser}
               closeModal={this.closeModal}/>
-            <RaisedButton
-              onClick={this.closeModal}
-              label="Back to Dash"
-              secondary={true}/>
           </Modal>
         </div>
       </div>

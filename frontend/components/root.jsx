@@ -1,5 +1,5 @@
 import React from 'react';
-import { Router, Route, IndexRoute, hashHistory } from 'react-router';
+import { Router, Route, IndexRoute, hashHistory, Redirect } from 'react-router';
 import { Provider } from 'react-redux';
 
 import App from './app';
@@ -7,6 +7,7 @@ import AuthFormContainer from './auth_form/auth_form_container';
 import DashContainer from './dash/dash_container';
 import CreatePollContainer from './static_create_poll/create_poll_container';
 import LiveViewContainer from './live_view/live_view_container';
+import Splash from './splash/splash';
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
@@ -33,7 +34,10 @@ const Root = ({store}) => {
     <Provider store={store}>
       <MuiThemeProvider>
         <Router history={ hashHistory }>
-          <Route path='/' component={ App }>
+          <Redirect from="/" to="welcome"/>
+          <Route component={ App }>
+            <Route path='welcome'
+                   component={ Splash }/>
             <Route path='login'
                    component={ AuthFormContainer }
                    onEnter={reqNotLoggedIn}/>
@@ -43,10 +47,7 @@ const Root = ({store}) => {
             <Route path='create'
                    component={ DashContainer }
                    onEnter={reqLoggedIn}/>
-            <Route path='new'
-                   component={ CreatePollContainer }
-                   onEnter={reqLoggedIn}/>
-                 <Route path='live/:live_url'
+            <Route path='live/:live_url'
                    component={ LiveViewContainer }
                    onEnter={reqLoggedIn}/>
           </Route>

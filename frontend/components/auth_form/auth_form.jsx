@@ -44,8 +44,8 @@ class AuthForm extends React.Component{
     // const formView = formType === "login" ? {LoginView} : {SignupView};
     const formType = location.hash.substring(2);
     return (
-      <div>
-        <h2>{formType}</h2>
+      <div className="centerform">
+        <h2>{formType.concat(":")}</h2>
           <form onSubmit={this.handleSubmit}>
             <TextField
               floatingLabelText="username"
@@ -59,6 +59,8 @@ class AuthForm extends React.Component{
               value={this.state.password}
               onChange={this.updateField("password")}>
             </TextField>
+            <br/>
+            <br/>
             <br/>
             <RaisedButton
               label={formType}

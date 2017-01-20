@@ -2,11 +2,23 @@ import React from 'react';
 import { Link, withRouter, hashHistory } from 'react-router';
 import RaisedButton from 'material-ui/RaisedButton';
 import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui/Toolbar';
+import {demoLogin} from '../../actions/session_actions';
 
 class NavBar extends React.Component{
 
   constructor() {
     super();
+
+  this.handleDemo = this.handleDemo.bind(this);
+  }
+
+  handleRedirect() {
+    hashHistory.push("/welcome");
+  }
+
+  handleDemo(e) {
+    e.preventDefault();
+    store.dispatch(demoLogin());
   }
 
   render() {
@@ -30,6 +42,10 @@ class NavBar extends React.Component{
     const NavNotLoggedIn = (
       <ToolbarGroup>
         <RaisedButton
+          onClick={this.handleDemo}
+          label="Login as Guest"/>
+        <ToolbarSeparator />
+        <RaisedButton
           containerElement={<Link to="/login" />}
           label="Log in"
           disabled={url === "#/login"}/>
@@ -48,7 +64,8 @@ class NavBar extends React.Component{
       <Toolbar>
         <ToolbarGroup>
           <h2>My</h2>
-          <ToolbarTitle text="QnA" />
+          <ToolbarTitle text="QnA"
+            onClick={this.handleRedirect}/>
         </ToolbarGroup>
         {buttons}
       </Toolbar>

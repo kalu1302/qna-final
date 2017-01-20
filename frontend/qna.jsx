@@ -7,14 +7,13 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
 
 //TODO remove testing
-import { login, signup, logout } from './actions/session_actions';
+import { demoLogin, login, signup, logout } from './actions/session_actions';
 import {fetchQuestions, receiveQuestions} from './actions/take_poll_actions';
 import * as TakePollApiUtil from './util/take_poll_api_util';
 import { fetchPollInfo, fetchResults} from './actions/live_view_actions';
 import * as LiveViewApiUtil from './util/live_view_api_util';
 import * as CreatePollApiUtil from './util/create_poll_api_util';
 import { values } from 'lodash';
-
 
 
 const submitGroupTest = {
@@ -62,6 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.values = values;
   window.submitGroupTest = submitGroupTest;
   window.CreatePollApiUtil = CreatePollApiUtil;
+  window.demoLogin = demoLogin;
 
   let store;
   if (window.currentUser) {

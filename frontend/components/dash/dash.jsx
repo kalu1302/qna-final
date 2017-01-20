@@ -20,23 +20,28 @@ class Dash extends React.Component {
 
     return (
       <div>
-        <div className="fill-screen">
-          <img className="make-it-fit" src="assets/sunset.jpeg"/>
-        </div>
         <br/>
         <br/>
+        <span className=
+          "flex-span">
         <RaisedButton
           containerElement={<Link to="new" />}
-          label="Create New Poll"/>
+          label="Create New Poll"
+          disabled={true}/>
         <br/>
+          <RaisedButton
+            label="Take Polls"
+            primary={true}
+            disabled={true}/>
         <br/>
         <RaisedButton
           containerElement={<Link to={liveUrl}/>}
-          label="Go To My Live Poll"/>
+          label="Go To My Live Poll"
+          primary={true}/>
+      </span>
         <br/>
         <TakePollIndexContainer/>
         <br/>
-
       </div>
     );}
   }

@@ -109,7 +109,7 @@ class TakePollItem extends React.Component {
       });
 
     return (
-      <div>
+      <div className="display-poll">
         <h4>{"Poll: ".concat(info.name)}</h4>
         <h3>{"Question: ".concat(currentQuestion.body)}</h3>
         <RadioButtonGroup
@@ -118,6 +118,8 @@ class TakePollItem extends React.Component {
           valueSelected={this.currentAnswered()}>
           {answerChoices}
         </RadioButtonGroup>
+        <br/>
+        <br/>
         <RaisedButton
           ref="prev"
           label="Prev Question"
@@ -131,6 +133,7 @@ class TakePollItem extends React.Component {
         <RaisedButton
           ref="submitAnswers"
           label="Finish Poll"
+          primary={true}
           onClick={this.handleSubmit}
           disabled={this.incompleteForm()}/>
       </div>
