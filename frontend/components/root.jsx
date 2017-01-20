@@ -48,8 +48,7 @@ const Root = ({store}) => {
                    component={ DashContainer }
                    onEnter={reqLoggedIn}/>
             <Route path='live/:live_url'
-                   component={ LiveViewContainer }
-                   onEnter={reqLoggedIn}/>
+                   component={ LiveViewContainer }/>
           </Route>
         </Router>
       </MuiThemeProvider>

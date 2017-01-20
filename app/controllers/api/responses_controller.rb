@@ -3,7 +3,7 @@ class Api::ResponsesController < ApplicationController
   def create
     @answers = params["answers"]
     @group = Answer.find(@answers.first).question.group
-    @user_id = params["user_id"]
+    @user_id = params["user_id"] ? params["user_id"] : 1
     @responses = []
 
     # frontend validated

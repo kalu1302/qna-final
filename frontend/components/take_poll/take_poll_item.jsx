@@ -71,7 +71,11 @@ class TakePollItem extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    let answers = {user_id: this.props.currentUser.id, answers: this.state.answers};
+    let user_id = 1;
+    if (this.props.currentUser !== null) {
+      user_id = this.props.currentUser.id;
+    }
+    let answers = {user_id: user_id, answers: this.state.answers};
     this.props.submitPollAnswers(answers);
     this.props.closeModal();
   }
