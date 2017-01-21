@@ -10,8 +10,8 @@ const RootReducer = combineReducers({
   session: SessionReducer,
   takePoll: TakePollReducer,
   pollIndex: TakePollIndexReducer,
-  liveView: LiveViewReducer
-  // pollForm: CreatePollReducer
+  liveView: LiveViewReducer,
+  pollForm: CreatePollReducer
 });
 
 export default RootReducer;

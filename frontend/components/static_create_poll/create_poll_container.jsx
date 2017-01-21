@@ -9,7 +9,7 @@ import QuestionForm from './question_form';
 
 const mapStateToProps = (state) => ({
   currentUser: state.session.currentUser,
-  pollForm: state.pollForm
+  group: state.pollForm,
 });
 
 const mapDispatchToProps = dispatch => ({

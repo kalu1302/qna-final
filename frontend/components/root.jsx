@@ -47,6 +47,9 @@ const Root = ({store}) => {
             <Route path='create'
                    component={ DashContainer }
                    onEnter={reqLoggedIn}/>
+            <Route path='new'
+                    component={ CreatePollContainer }
+                    onEnter={reqLoggedIn}/>
             <Route path='live/:live_url'
                    component={ LiveViewContainer }/>
           </Route>
