@@ -6,12 +6,20 @@ import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import RaisedButton from 'material-ui/RaisedButton';
 
+import AnswerForm from './answer_form';
+
 class QuestionForm extends React.Component {
 
   constructor() {
     super();
 
     this.handleOnChange = this.handleOnChange.bind(this);
+    this.handleAddAnswer = this.handleAddAnswer.bind(this);
+  }
+
+  handleAddAnswer(e) {
+    e.preventDefault;
+
   }
 
   handleOnChange(e) {
@@ -26,7 +34,9 @@ class QuestionForm extends React.Component {
     const receiveQuestionData = this.props.receiveQuestionData;
 
     //TODO implement answers
-    const renderAnswers = "";
+    const renderAnswers = Object.keys(question.answers).map(
+
+    );
 
     return (
             <div>
@@ -36,6 +46,10 @@ class QuestionForm extends React.Component {
               onChange={this.handleOnChange}>
             </TextField>
             {renderAnswers}
+            <RaisedButton
+              label="Add A New Answer"
+              onClick={this.handleAddAnswer}
+              />
           </div>
   );
   }

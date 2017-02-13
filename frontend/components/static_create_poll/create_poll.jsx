@@ -8,7 +8,7 @@ import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import RaisedButton from 'material-ui/RaisedButton';
 
-
+import QuestionForm from './question_form';
 /*
 QuestionFormIndex
   QuestionForm
@@ -79,16 +79,9 @@ class CreatePoll extends React.Component {
   constructor() {
     super();
 
-    this.state = {
-      user_id: this.props.currentUser.id,
-      name: "",
-      add: 0
-    };
-
     this.handleSubmit = this.handleSubmit.bind(this);
     this.frontendValid = this.frontendValid.bind(this);
     this.handleAddQuestion = this.handleAddQuestion.bind(this);
-    this.handleAddAnswer = this.handleAddAnswer.bind(this);
     this.handleStateChange = this.handleStateChange.bind(this);
     this.receiveAnswerData = this.receiveAnswerData.bind(this);
     this.receiveQuestionData = this.receiveQuestionData.bind(this);
@@ -113,37 +106,36 @@ class CreatePoll extends React.Component {
 
   handleAddQuestion (e) {
     e.preventDefault();
-    let add = this.state.add + 1;
-    this.setState({add});
-  }
 
-  handleAddAnswer () {
-    //increment index
-    //"create" <QuestionFormContainer index={index}/> by modifying the store
-  }
+    const question_indices = Object.keys(this.props.group.questions);
+    const new_index = question_indices.sort( (a,b) => (b - a) )[0];
+    if ( typeof new_index === "undefined") {
+      new_index = 0;
+    };
 
-  handleStateChange() {
-
-  }
-
-  render () {
-
-    const defaultQuestion = {
+    const defaultQuestion = {[new_index]: {
             body: "",
             question_type: "mc",
             answers: {
               0: { body: "",
+                   answer_type: "closed"},
+              1: { body: "",
                    answer_type: "closed"}
             }
           };
 
-    let question_index = [];
+    this.receiveQuestionData(defaultQuestion);
+  }
+
+  handleStateChange() {
+  }
+
+  render () {
 
     const questions = this.props.group.questions;
     const renderQuestions = Object.keys(questions).map(
       (q_ind) => {
         let question = questions[q_ind];
-        question_index.push(q_ind);
 
         return (
         <QuestionForm
@@ -156,26 +148,14 @@ class CreatePoll extends React.Component {
       }
     );
 
-    question_index = question_index.sort((a, b) => a - b);
-
-    //TODO FIX THIS when remove question implemented
-    const start_index = question_index.length + 0;
-    let renderAddQuestions = (
-      range(this.state.add).map((ind) => (
-        <QuestionForm
-          key={start_index + ind}
-          index={start_index + ind}
-          question={defaultQuestion}
-          receiveAnswerData={this.receiveAnswerData}
-          receiveQuestionData={this.receiveQuestionData}/>
-      ))
-    );
-
     return (
 
         <form onSubmit={this.handleSubmit}>
           {renderQuestions}
-          {renderAddQuestions}
+          <RaisedButton
+            onClick={this.handleAddQuestion}
+            fullWidth={true}
+            label="Add a New Question"/>
         </form>
     );
   }

@@ -31,13 +31,12 @@ export const submitPoll = (group) => (dispatch) => (
 
 
 export const receiveGroupData = (group) => ({
-  type: RECEIVE_ANSWER_DATA,
+  type: RECEIVE_GROUP_DATA,
   group: group
 });
 
-export const receiveAnswerData = (qIndex, indexedAnswer) => ({
+export const receiveAnswerData = (indexedAnswer) => ({
   type: RECEIVE_ANSWER_DATA,
-  questionIndex: qIndex,
   answer: indexedAnswer
 });
 
