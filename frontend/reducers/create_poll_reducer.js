@@ -2,7 +2,17 @@ import { merge } from 'lodash';
 import {} from '../actions/create_poll_actions';
 
   const defaultSessionState = {
-
+    user_id:
+    name:
+    questions: {
+    0: { body:
+    question_type:
+    answers: {
+    0: { body:
+    answer_type:
+    }
+    }
+    }
   };
 
   const CreatePollReducer = (oldState = defaultCreatePollState, action) => {
