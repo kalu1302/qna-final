@@ -12,12 +12,12 @@ QnA is a personal project by Kathy Luo.
 
 ![QnA Welcome Screen](/docs/images/homepage.png?raw=true "Homepage")
 
-##Implemented and Planned Features
+##Implemented Features
 
 - [x] User accounts with secure authentication and demo user login
 - [x] Poll index view for logged in users
 - [x] Live url for anonymous poll-taking with immediate results view
-- [x] Poll creation and broadcasting
+- [x] Poll creation and redirect to live view
 
 
 Poll Index:
