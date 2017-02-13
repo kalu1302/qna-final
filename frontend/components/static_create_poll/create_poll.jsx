@@ -76,15 +76,15 @@ to format for API will call lodash._values(questions and answers)
 
 class CreatePoll extends React.Component {
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.frontendValid = this.frontendValid.bind(this);
+    // this.handleSubmit = this.handleSubmit.bind(this);
+    // this.frontendValid = this.frontendValid.bind(this);
     this.handleAddQuestion = this.handleAddQuestion.bind(this);
-    this.handleStateChange = this.handleStateChange.bind(this);
-    this.receiveAnswerData = this.receiveAnswerData.bind(this);
-    this.receiveQuestionData = this.receiveQuestionData.bind(this);
+    // this.handleStateChange = this.handleStateChange.bind(this);
+    this.receiveAnswerData = props.receiveAnswerData.bind(this);
+    this.receiveQuestionData = props.receiveQuestionData.bind(this);
   }
 
   frontendValid() {
@@ -108,21 +108,24 @@ class CreatePoll extends React.Component {
     e.preventDefault();
 
     const question_indices = Object.keys(this.props.group.questions);
-    const new_index = question_indices.sort( (a,b) => (b - a) )[0];
+    let new_index = question_indices.sort( (a,b) => (b - a) )[0];
     if ( typeof new_index === "undefined") {
       new_index = 0;
-    };
+    }
 
     const defaultQuestion = {[new_index]: {
-            body: "",
-            question_type: "mc",
-            answers: {
-              0: { body: "",
-                   answer_type: "closed"},
-              1: { body: "",
-                   answer_type: "closed"}
-            }
-          };
+        body: "",
+        question_type: "mc",
+        answers: {
+          0: { body: "",
+          answer_type: "closed"
+          },
+          1: { body: "",
+          answer_type: "closed"
+          }
+          }
+        }
+      };
 
     this.receiveQuestionData(defaultQuestion);
   }
@@ -152,10 +155,22 @@ class CreatePoll extends React.Component {
 
         <form onSubmit={this.handleSubmit}>
           {renderQuestions}
+
+          <br/>
+          <br/>
+
           <RaisedButton
             onClick={this.handleAddQuestion}
             fullWidth={true}
             label="Add a New Question"/>
+
+          <br/>
+          <br/>
+
+          <RaisedButton
+            primary={true}
+            label="Submit New Quiz"
+            />
         </form>
     );
   }

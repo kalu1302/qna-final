@@ -8,8 +8,8 @@ import RaisedButton from 'material-ui/RaisedButton';
 
 class AnswerForm extends React.Component {
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.handleOnChange = this.handleOnChange.bind(this);
   }
@@ -24,7 +24,7 @@ class AnswerForm extends React.Component {
   render() {
     const question_index = this.props.question_index;
     const index = this.props.index;
-    const answer = this.props.group[question_index]answers[index];
+    const answer = this.props.answer;
 
     return (
             <div>

@@ -1,17 +1,23 @@
 import { merge } from 'lodash';
-import {} from '../actions/create_poll_actions';
+import {RECEIVE_GROUP_DATA, RECEIVE_QUESTION_DATA, RECEIVE_ANSWER_DATA} from '../actions/create_poll_actions';
 
-  const defaultSessionState = {
-    user_id:
-    name:
+  //TODO Fix naming the group
+
+  const defaultCreatePollState = {
+    user_id: 1,
+    name: "Quiz",
     questions: {
-    0: { body:
-    question_type:
-    answers: {
-    0: { body:
-    answer_type:
-    }
-    }
+      0: { body: "",
+        question_type: "mc",
+        answers: {
+          0: { body: "",
+          answer_type: "closed"
+          },
+          1: { body: "",
+          answer_type: "closed"
+          }
+        }
+      }
     }
   };
 

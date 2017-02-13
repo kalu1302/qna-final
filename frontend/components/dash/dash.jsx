@@ -27,7 +27,7 @@ class Dash extends React.Component {
         <RaisedButton
           containerElement={<Link to="new" />}
           label="Create New Poll"
-          disabled={true}/>
+          disabled={false}/>
         <br/>
           <RaisedButton
             label="Take Polls"

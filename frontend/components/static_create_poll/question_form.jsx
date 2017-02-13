@@ -10,8 +10,8 @@ import AnswerForm from './answer_form';
 
 class QuestionForm extends React.Component {
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.handleOnChange = this.handleOnChange.bind(this);
     this.handleAddAnswer = this.handleAddAnswer.bind(this);
@@ -24,32 +24,41 @@ class QuestionForm extends React.Component {
 
   handleOnChange(e) {
     let question = {[this.props.index]: e.target.value};
-    this.receiveQuestionData(question);
+
+    this.props.receiveQuestionData(question);
   }
 
   render() {
+
     const question = this.props.question;
     const index = this.props.index;
     const receiveAnswerData = this.props.receiveAnswerData;
     const receiveQuestionData = this.props.receiveQuestionData;
 
     //TODO implement answers
-    const renderAnswers = Object.keys(question.answers).map(
-
-    );
+    const renderAnswers = Object.keys(question.answers).map((ind) => (
+      <AnswerForm
+        receiveAnswerData={receiveAnswerData}
+        questionIndex={index}
+        key={ind}
+        index={ind}
+        answer={question.answers[ind]}/>
+    ));
 
     return (
             <div>
             <TextField
               floatingLabelText={"Question: ".concat(index)}
               value={question.body}
-              onChange={this.handleOnChange}>
+              onChange={this.handleOnChange}
+              fullWidth={true}>
             </TextField>
             {renderAnswers}
             <RaisedButton
               label="Add A New Answer"
               onClick={this.handleAddAnswer}
               />
+            <br/>
           </div>
   );
   }

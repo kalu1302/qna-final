@@ -5,17 +5,17 @@ import {receiveGroupData,
         submitPoll} from '../../actions/create_poll_actions';
 import CreatePoll from './create_poll';
 
-import QuestionForm from './question_form';
-
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state) => {
+  return ({
   currentUser: state.session.currentUser,
-  group: state.pollForm,
-});
+  group: state.pollForm
+  });
+};
 
 const mapDispatchToProps = dispatch => ({
   receiveGroupData: () => dispatch(receiveGroupData()),
   receiveQuestionData: (indexedQuestion) => dispatch(receiveQuestionData(indexedQuestion)),
-  receiveAnswerData: (qIndex, indexedAnswer) => dispatch(receiveAnswerData(qIndex, indexedAnswer)),
+  receiveAnswerData: (indexedAnswer) => dispatch(receiveAnswerData(indexedAnswer)),
   submitPoll: (data) => dispatch(submitPoll(data))
 });
 
