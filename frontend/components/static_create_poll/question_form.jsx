@@ -12,18 +12,23 @@ class QuestionForm extends React.Component {
 
   constructor(props) {
     super(props);
+    this.state = {value: ""};
 
     this.handleOnChange = this.handleOnChange.bind(this);
     this.handleAddAnswer = this.handleAddAnswer.bind(this);
   }
 
   handleAddAnswer(e) {
-    e.preventDefault;
 
+    let newInd = 1 + parseInt(Object.keys(this.props.question.answers).sort((a,b) => (b - a))[0]);
+    let qId = this.props.index;
+    let newAnswer = {[qId]: {answers: {[newInd]: {body: e.target.value, type: "closed"}}}};
+    this.props.receiveAnswerData(newAnswer);
   }
 
   handleOnChange(e) {
-    let question = {[this.props.index]: e.target.value};
+    this.setState({value: e.target.value});
+    let question = {[this.props.index]: { body: e.target.value }};
 
     this.props.receiveQuestionData(question);
   }
@@ -48,9 +53,10 @@ class QuestionForm extends React.Component {
     return (
             <div>
             <TextField
-              floatingLabelText={"Question: ".concat(index)}
-              value={question.body}
+              floatingLabelText={"Question: ".concat(parseInt(index) + 1)}
+              value={this.state.value}
               onChange={this.handleOnChange}
+              hintText="New Question"
               fullWidth={true}>
             </TextField>
             {renderAnswers}

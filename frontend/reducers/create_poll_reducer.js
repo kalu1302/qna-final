@@ -27,9 +27,9 @@ import {RECEIVE_GROUP_DATA, RECEIVE_QUESTION_DATA, RECEIVE_ANSWER_DATA} from '..
         case RECEIVE_GROUP_DATA:
             return action.group;
         case RECEIVE_QUESTION_DATA:
-          return merge(oldState, {questions: action.question});
+          return merge({}, oldState, {questions: action.question});
         case RECEIVE_ANSWER_DATA:
-          return merge(oldState, {questions: action.answer});
+          return merge({}, oldState, {questions: action.answer});
     //   case RECEIVE_CURRENT_USER:
     //     return merge({}, defaultSessionState, {currentUser: action.currentUser});
     //   case RECEIVE_USER_ERRORS:

@@ -37,11 +37,14 @@ class Api::GroupsController < ApplicationController
 
       end
 
+      @user = current_user
       @user.live_group = @group.id
       @user.save!
     end
     #PASS BACK USER HASH for redirect
-    render :create
+    @hash = {}
+    @hash[:hash] = @user.live_url
+    render json: @hash
   end
 
   private

@@ -11,14 +11,18 @@ class AnswerForm extends React.Component {
   constructor(props) {
     super(props);
 
+    this.state = {value: ""};
+
     this.handleOnChange = this.handleOnChange.bind(this);
   }
 
   handleOnChange(e) {
-    let qId = this.props.questionIndex;
-    let answer = {[qId]: {answers: {[this.props.index]: e.target.value}}};
+    this.setState({value: e.target.value});
 
-    this.receiveAnswerData(answer);
+    let qId = this.props.questionIndex;
+    let answer = {[qId]: {answers: {[this.props.index]: {body: e.target.value}}}};
+
+    this.props.receiveAnswerData(answer);
   }
 
   render() {
@@ -29,8 +33,8 @@ class AnswerForm extends React.Component {
     return (
             <div>
             <TextField
-              floatingLabelText={"Answer: ".concat(index)}
-              value={answer.body}
+              floatingLabelText={"Answer: ".concat(parseInt(index) + 1)}
+              value={this.state.value}
               onChange={this.handleOnChange}>
             </TextField>
           </div>

@@ -7,6 +7,7 @@ import TextField from 'material-ui/TextField';
 import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import RaisedButton from 'material-ui/RaisedButton';
+import {blue500} from 'material-ui/styles/colors';
 
 import QuestionForm from './question_form';
 /*
@@ -79,12 +80,15 @@ class CreatePoll extends React.Component {
   constructor(props) {
     super(props);
 
+    this.state = {value: "Untitled Quiz"};
+
     // this.handleSubmit = this.handleSubmit.bind(this);
     // this.frontendValid = this.frontendValid.bind(this);
     this.handleAddQuestion = this.handleAddQuestion.bind(this);
-    // this.handleStateChange = this.handleStateChange.bind(this);
+    this.handleStateChange = this.handleStateChange.bind(this);
     this.receiveAnswerData = props.receiveAnswerData.bind(this);
     this.receiveQuestionData = props.receiveQuestionData.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   frontendValid() {
@@ -95,12 +99,17 @@ class CreatePoll extends React.Component {
     //return boolean
   }
 
-  handleSubmit() {
+  handleSubmit(e) {
     //checks form and returns true false for if valid
-    if (this.frontendValid) {
+    // if (this.frontendValid) {
       //util call
       //store change for next page (renders active poll)
-    }
+    e.preventDefault();
+    let data = this.props.group;
+    data.name = this.state.value;
+    data.user_id = this.props.currentUser.id;
+    this.props.submitPoll({group: data});
+    // }
 
   }
 
@@ -108,7 +117,7 @@ class CreatePoll extends React.Component {
     e.preventDefault();
 
     const question_indices = Object.keys(this.props.group.questions);
-    let new_index = question_indices.sort( (a,b) => (b - a) )[0];
+    let new_index = 1 + parseInt(question_indices.sort( (a,b) => (b - a) )[0]);
     if ( typeof new_index === "undefined") {
       new_index = 0;
     }
@@ -130,7 +139,8 @@ class CreatePoll extends React.Component {
     this.receiveQuestionData(defaultQuestion);
   }
 
-  handleStateChange() {
+  handleStateChange(e) {
+    this.setState({value: e.target.value});
   }
 
   render () {
@@ -154,6 +164,17 @@ class CreatePoll extends React.Component {
     return (
 
         <form onSubmit={this.handleSubmit}>
+          <br/>
+          <TextField
+            floatingLabelText="Quiz Name"
+            onChange={this.handleStateChange}
+            floatingLabelFixed={true}
+            value={this.state.value}
+            />
+
+          <br/>
+          <br/>
+
           {renderQuestions}
 
           <br/>
@@ -170,6 +191,7 @@ class CreatePoll extends React.Component {
           <RaisedButton
             primary={true}
             label="Submit New Quiz"
+            onClick={this.handleSubmit}
             />
         </form>
     );

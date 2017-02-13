@@ -22,9 +22,9 @@ export const RECEIVE_QUESTION_DATA = "RECEIVE_QUESTION_DATA";
 
 export const submitPoll = (group) => (dispatch) => (
   CreatePollApiUtil.submitPoll(group).then(
-                  (hash) => {
+                  ({hash}) => {
                     dispatch(fetchPollInfo(hash));
-                    hashHistory.push(`/${hash}`);
+                    hashHistory.push(`/live/${hash}`);
                   })
 );
 
