@@ -8,6 +8,8 @@ import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import RaisedButton from 'material-ui/RaisedButton';
 import {blue500} from 'material-ui/styles/colors';
+import DropDownMenu from 'material-ui/DropDownMenu';
+import MenuItem from 'material-ui/MenuItem';
 
 import QuestionForm from './question_form';
 /*
@@ -80,7 +82,7 @@ class CreatePoll extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {value: "Untitled Quiz"};
+    this.state = {value: "Untitled Quiz", selected: 1};
 
     // this.handleSubmit = this.handleSubmit.bind(this);
     // this.frontendValid = this.frontendValid.bind(this);
@@ -89,6 +91,7 @@ class CreatePoll extends React.Component {
     this.receiveAnswerData = props.receiveAnswerData.bind(this);
     this.receiveQuestionData = props.receiveQuestionData.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleSelectChange = this.handleSelectChange.bind(this);
   }
 
   frontendValid() {
@@ -107,6 +110,7 @@ class CreatePoll extends React.Component {
     e.preventDefault();
     let data = this.props.group;
     data.name = this.state.value;
+    data.subject = this.state.selected;
     data.user_id = this.props.currentUser.id;
     this.props.submitPoll({group: data});
     // }
@@ -143,6 +147,11 @@ class CreatePoll extends React.Component {
     this.setState({value: e.target.value});
   }
 
+  handleSelectChange(e, index, value) {
+    debugger
+    this.setState({selected: value});
+  }
+
   render () {
 
     const questions = this.props.group.questions;
@@ -171,6 +180,21 @@ class CreatePoll extends React.Component {
             floatingLabelFixed={true}
             value={this.state.value}
             />
+
+          <br/>
+          <DropDownMenu value={this.state.selected} onChange={this.handleSelectChange}>
+            <MenuItem value={1} primaryText="Art" />
+            <MenuItem value={2} primaryText="Astronomy" />
+            <MenuItem value={3} primaryText="Biology" />
+            <MenuItem value={4} primaryText="Color Theory" />
+            <MenuItem value={5} primaryText="Design" />
+            <MenuItem value={6} primaryText="Electronics" />
+            <MenuItem value={7} primaryText="Finance" />
+            <MenuItem value={8} primaryText="Geography" />
+            <MenuItem value={9} primaryText="Government" />
+            <MenuItem value={10} primaryText="Mathematics" />
+            <MenuItem value={11} primaryText="Programming" />
+          </DropDownMenu>
 
           <br/>
           <br/>
