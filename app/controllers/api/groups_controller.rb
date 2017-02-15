@@ -14,7 +14,8 @@ class Api::GroupsController < ApplicationController
   def create
     Group.transaction do
       @group = Group.new(user_id: create_poll_params[:user_id],
-                         name: create_poll_params[:name])
+                         name: create_poll_params[:name],
+                         subject: create_poll_params[:subject])
       @group.save
 
       questions_params = params[:group][:questions]
