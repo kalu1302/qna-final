@@ -201,14 +201,12 @@ class CreatePoll extends React.Component {
 
           {renderQuestions}
 
-          <br/>
-          <br/>
-
+          <div className="shadow-card">
           <RaisedButton
             onClick={this.handleAddQuestion}
             fullWidth={true}
             label="Add a New Question"/>
-
+          </div>
           <br/>
           <br/>
 

@@ -51,7 +51,7 @@ class QuestionForm extends React.Component {
     ));
 
     return (
-            <div>
+            <div className="shadow-card">
             <TextField
               floatingLabelText={"Question: ".concat(parseInt(index) + 1)}
               value={this.state.value}
