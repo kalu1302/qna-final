@@ -51,9 +51,9 @@ div.poll-index-item-container:hover {
 
 .poll-index-item > h4 {
   position: absolute;
-  top: 20px;
-  left: 120px;
-  font-size: 12px;
+  top: 200px;
+  left: 20px;
+  font-size: 15px;
 }
 
 .poll-index-item:hover {
