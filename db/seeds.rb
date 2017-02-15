@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 user1 = User.create({username: "testing2", password: "testing", live_group: 1})
-gr1 = Group.create({user_id: user1.id, name: "Group1"})
+gr1 = Group.create({user_id: user1.id, name: "Group1", subject: 1})
 q1 = Question.create({body: "Cats or Dogs?", group_id: gr1.id, question_type: "mc"})
 a1 = Answer.create({question_id: q1.id, body: "Cats", answer_type: "closed"})
 a2 = Answer.create({question_id: q1.id, body: "Dogs", answer_type: "closed"})
@@ -20,7 +20,7 @@ a2_5 = Answer.create({question_id: q2.id, body: "Trailmix", answer_type: "closed
 a2_6 = Answer.create({question_id: q2.id, body: "Breakfast item 6", answer_type: "closed"})
 a2_7 = Answer.create({question_id: q2.id, body: "Fruits", answer_type: "closed"})
 
-gr2 = Group.create({user_id: user1.id, name: "Group2"})
+gr2 = Group.create({user_id: user1.id, name: "Group2", subject: 4})
 q2_2 = Question.create({body: "Favorite Breakfast?", group_id: gr2.id, question_type: "mc"})
 a2_1 = Answer.create({question_id: q2_2.id, body: "Grand Slam", answer_type: "closed"})
 a2_2 = Answer.create({question_id: q2_2.id, body: "Cereal", answer_type: "closed"})

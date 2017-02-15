@@ -1,4 +1,6 @@
 json.name @group.name
+json.subject @group.subject
+json.id @group.id
 
 @questions = @group.questions
 json.questions(@questions) do |question|

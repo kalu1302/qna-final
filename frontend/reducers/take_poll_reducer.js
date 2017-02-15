@@ -2,7 +2,8 @@ import { merge } from 'lodash';
 import { RECEIVE_QUESTIONS, RESET_QUESTIONS, ReceiveQuestions} from '../actions/take_poll_actions';
 
   const defaultTakePollState = {
-    name: "",
+    subject: "0",
+    name: "Loading",
     questions: [
       { answers: [
         {

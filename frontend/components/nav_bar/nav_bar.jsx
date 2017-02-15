@@ -26,12 +26,36 @@ class NavBar extends React.Component{
 
     const currentUser = this.props.currentUser;
 
+    let liveUrlIsValid = false;
+    let liveUrl = "";
+
+    //create live_url and link
+    if (currentUser) {
+    liveUrlIsValid =
+    (typeof this.props.currentUser.live_url === "string")
+    && (typeof this.props.currentUser.live_group === "string");
+
+    liveUrl = liveUrlIsValid ?
+                    "/live/".concat(this.props.currentUser.live_url) : "/new";
+    }
     const NavLoggedIn =
     (
       <ToolbarGroup>
         <RaisedButton
+          containerElement={<Link to="/new" />}
+          label="Create New"
+          primary={true}
+          disabled={url === "#/new"}/>
+        <ToolbarSeparator />
+        <RaisedButton
+          containerElement={<Link to={liveUrl}/>}
+          label="My Classroom"
+          primary={true}
+          disabled={!liveUrlIsValid || url === `#${liveUrl}`}/>
+        <ToolbarSeparator />
+        <RaisedButton
           containerElement={<Link to="/create" />}
-          label="My Dashboard"
+          label="My GradeBook"
           primary={true}
           disabled={url === "#/create"}/>
         <ToolbarSeparator />

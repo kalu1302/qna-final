@@ -10,13 +10,17 @@ class TakePollIndex extends React.Component {
   render() {
     const allGroups = this.props.groups;
 
+    debugger
+
     let renderPolls = (
       allGroups.map( item => (
         <li className="poll-index-item-container"
           key={item.id}
           >
           <TakePollContainer
-            groupId={item.id}/>
+            groupId={item.id}
+            groupName={item.name}
+            groupSubject={item.subject}/>
         </li>)
       )
     );

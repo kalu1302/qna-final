@@ -2,8 +2,9 @@ import { merge } from 'lodash';
 import { RECEIVE_POLLS_INDEX, receivePollsIndex } from '../actions/take_poll_index_actions';
 
   const defaultPollIndexState = {groups: [{
-    name: "",
-    id: ""
+    name: "Loading",
+    id: "1",
+    subject: "0"
   }]};
 
   const TakePollIndexReducer = (oldState = defaultPollIndexState, action) => {

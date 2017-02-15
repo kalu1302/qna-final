@@ -6,7 +6,7 @@ import {RECEIVE_GROUP_DATA, RECEIVE_QUESTION_DATA, RECEIVE_ANSWER_DATA} from '..
   const defaultCreatePollState = {
     user_id: 1,
     name: "Untitled Quiz",
-    subject: 1,
+    subject: "1",
     questions: {
       0: { body: "",
         question_type: "mc",

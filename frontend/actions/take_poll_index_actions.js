@@ -6,6 +6,7 @@ export const fetchAllGroups = () => (dispatch) => (
   GroupApiUtil.fetchAllGroups()
                 .then(
                   groups => {
+                    console.log(groups);
                     dispatch(receivePollsIndex(groups));
                   })
 );

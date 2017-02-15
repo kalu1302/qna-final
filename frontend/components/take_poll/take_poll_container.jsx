@@ -7,6 +7,8 @@ const mapStateToProps = (state, myProps) => {
   float: myProps.float,
   takePoll: state.takePoll,
   groupId: myProps.groupId,
+  groupName: myProps.groupName,
+  groupSubject: myProps.groupSubject,
   currentUser: state.session.currentUser
   };
 

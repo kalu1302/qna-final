@@ -82,7 +82,7 @@ class CreatePoll extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {value: "Untitled Quiz", selected: 1};
+    this.state = {value: "Untitled Quiz", selected: "1"};
 
     // this.handleSubmit = this.handleSubmit.bind(this);
     // this.frontendValid = this.frontendValid.bind(this);
@@ -148,7 +148,6 @@ class CreatePoll extends React.Component {
   }
 
   handleSelectChange(e, index, value) {
-    debugger
     this.setState({selected: value});
   }
 
@@ -183,17 +182,17 @@ class CreatePoll extends React.Component {
 
           <br/>
           <DropDownMenu value={this.state.selected} onChange={this.handleSelectChange}>
-            <MenuItem value={1} primaryText="Art" />
-            <MenuItem value={2} primaryText="Astronomy" />
-            <MenuItem value={3} primaryText="Biology" />
-            <MenuItem value={4} primaryText="Color Theory" />
-            <MenuItem value={5} primaryText="Design" />
-            <MenuItem value={6} primaryText="Electronics" />
-            <MenuItem value={7} primaryText="Finance" />
-            <MenuItem value={8} primaryText="Geography" />
-            <MenuItem value={9} primaryText="Government" />
-            <MenuItem value={10} primaryText="Mathematics" />
-            <MenuItem value={11} primaryText="Programming" />
+            <MenuItem value={"1"} primaryText="Art" />
+            <MenuItem value={"2"} primaryText="Astronomy" />
+            <MenuItem value={"3"} primaryText="Biology" />
+            <MenuItem value={"4"} primaryText="Color Theory" />
+            <MenuItem value={"5"} primaryText="Design" />
+            <MenuItem value={"6"} primaryText="Electronics" />
+            <MenuItem value={"7"} primaryText="Finance" />
+            <MenuItem value={"8"} primaryText="Geography" />
+            <MenuItem value={"9"} primaryText="Government" />
+            <MenuItem value={"10"} primaryText="Mathematics" />
+            <MenuItem value={"11"} primaryText="Programming" />
           </DropDownMenu>
 
           <br/>
