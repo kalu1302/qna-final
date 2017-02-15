@@ -1,19 +1,7 @@
 
 /* splash image fit */
 
- div.fill-screen {
-     position: relative;
-     left: 0;
-     right: 0;
-     top: 0;
-     bottom: 0;
-     text-align: center;
- }
 
- img.make-it-fit {
-     max-width: 99%;
-     max-height: 99%;
- }
 
 /* poll index grid */
 
@@ -75,9 +63,11 @@ div.poll-index-item-container:hover {
 .bar-chart-div {
   font-family: 'Roboto', sans-serif;
   font: 10px;
+  vertical-align: top;
+  display: inline-flex;
   text-transform: uppercase;
   background-color: #00BCD4;
-  text-align: right;
+  justify-content: flex-end;
   padding: 10px;
   margin: 5px;
   color: white;
@@ -95,16 +85,20 @@ div.poll-index-item-container:hover {
   0 10px 10px rgba(0,0,0,0.22);
 }
 
-.float-text {
-    left: 40px;
-    position: absolute;
-    text-align:left;
-    top: 30px;
-    width: 100%;
-    font-family: 'Roboto', sans-serif;
-    font-size: 25px;
-    text-transform: uppercase;
-    color: white;
+.bar-chart-text {
+  padding-top: 10px;
+  display: inline-flex;
+  font-family: 'Roboto', sans-serif;
+  font: 10px;
+  text-transform: uppercase;
+}
+
+.shadow-card {
+  padding: 10px;
+  margin: 10px;
+  background-color: #e9f4f6;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12),
+  0 1px 2px rgba(0,0,0,0.24);
 }
 
 .float-text > br {

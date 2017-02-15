@@ -35,12 +35,13 @@ class LiveViewBarChart extends React.Component {
   }
 
   render () {
+
     //THIS IS A horizontal barchart
     let data = this.state;
     let title = Object.keys(this.props.data);
 
 
-    const max_w = 600;
+    const max_w = Math.floor(window.innerWidth * 0.95);
     const max_h = 200;
 
     const width_pad_factor = 1.25;
@@ -55,23 +56,45 @@ class LiveViewBarChart extends React.Component {
 
 
     const renderDivs = Object.keys(data).map(
-      (text) => {
+      (text, idx) => {
         let value = data[text];
         let width = value * width_unit;
+        if (isNaN(width)) {
+          width = 5;
+        }
+        if (width > (0.5 * max_w)) {
+          return (
+          <div
+            key={text +idx}>
+          <div
+            style={{width: px(width), height: px(height)}}
+            className="bar-chart-div"
+            width={px(width)}
+            height={px(height)}
+            >{text}: {value}</div>
+        </div>
+      )} else {
         return (
-        <div
-          key={text}
-          style={{width: px(width), height: px(height)}}
-          className="bar-chart-div"
-          width={px(width)}
-          height={px(height)}
-          >{text}: {value}</div>
-      );
+          <div
+            key={text + idx}>
+          <div
+            style={{width: px(width), height: px(height)}}
+            className="bar-chart-div"
+            width={px(width)}
+            height={px(height)}
+            ></div>
+          <div className="bar-chart-text">
+            {text}: {value}
+          </div>
+        </div>
+        )
+      };
 
-    });
+      });
 
     return (
-      <div>
+      <div
+        className="shadow-card">
         <h3>{title}</h3>
         {renderDivs}
       </div>

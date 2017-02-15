@@ -17,16 +17,29 @@ class Splash extends React.Component {
   render () {
 
     return (
-      <div className="fill-screen">
-        <img className="make-it-fit" src="assets/creative.jpeg"
-             onClick={this.handleClick.bind(this)}/>
-           <div className="float-text">
-             Express Yourself :
-             <br/>
-             Take Polls, Make Polls
-             <br/>
-             Share and Create
-             </div>
+      <div>
+
+        <div className="fill-screen">
+
+          <img className="make-it-fit" src="assets/creative.jpeg"
+               onClick={this.handleClick.bind(this)}/>
+
+          <div className="float-text">
+            Easy and Quick QnA's :
+            <br/>
+            Polls for the classroom
+            <br/>
+            Quizzes for homework
+          </div>
+
+          <div className="demo-button">
+            <RaisedButton
+              label="Log me in and show me the features!"/>
+          </div>
+
+
+        </div>
+
       </div>
     );
   }
