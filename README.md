@@ -12,7 +12,7 @@ QnA is a personal project by Kathy Luo.
 
 ![QnA Welcome Screen](/docs/images/homepage.png?raw=true "Homepage")
 
-##Implemented Features
+## Implemented Features
 
 - [x] User accounts with secure authentication and demo user login
 - [x] Poll index view for logged in users
@@ -38,7 +38,7 @@ Create New Polls:
 
 ![Creating Polls](/docs/images/Create_poll.png?raw=true "Creating Polls")
 
-##Technology
+## Technology
 
 QnA:
 - runs on Ruby on Rails
