@@ -6,7 +6,7 @@
 
 ## QnA
 
-QnA is a web application for users to create and take polls. The website was inspired by Poll Everywhere and built using Ruby on Rails and React/Redux.
+QnA is a web application for users to create and take polls. The website was built using Ruby on Rails and React/Redux.
 
 QnA is a personal project by Kathy Luo.
 
@@ -41,7 +41,6 @@ Create New Polls:
 ## Technology
 
 QnA:
-- runs on Ruby on Rails
-- is hosted on Heroku
-- uses postgresql as its database
-- uses React.js and Redux for single-page application presentation
+- SPA built with React/Redux and Rails
+- PostgreSQL as database
+- hosted on Heroku
